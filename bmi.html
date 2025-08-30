@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeingFit - BMI Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 20px 0;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .container {
+            width: 70%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .align-header {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: gray;
+            padding: 5px;
+        }
+
+        .logout-icon {
+            display: inline-block;
+            margin-left: 20px;
+        }
+
+        .logout-icon img {
+            width: 30px;
+            height: 30px;
+        }
+
+        #hero {
+            background-image: url('Assets/images/Home-page-background.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .bmi-container {
+            text-align: center;
+            padding: 50px;
+            background-color: rgba(93, 93, 93, 0.8); /* Transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for header */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for text */
+        }
+
+        label {
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .calculate-btn {
+            background-color: #000000;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .calculate-btn:hover {
+            background-color: #555555;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #ff0000;
+        }
+
+        footer {
+            background-color: #000000;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="align-header">
+                <h1>BeingFIT</h1>
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        
+                    </ul>
+                </nav>
+
+                <div class="logout-icon">
+                    <a href="logout.php" class="logout-icon">
+                        <img src="Assets/icons/logout.png" alt="logout" width="50px">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="hero">
+        <div class="bmi-container">
+            <h1>BMI Calculator</h1>
+            <p>Enter your weight and height to calculate your Body Mass Index (BMI).</p>
+
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" placeholder="Enter your weight in kg">
+
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" placeholder="Enter your height in cm">
+
+            <button class="calculate-btn" onclick="calculateBMI()">Calculate BMI</button>
+
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 BeingFit. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function calculateBMI() {
+            var weight = document.getElementById('weight').value;
+            var height = document.getElementById('height').value;
+
+            if (weight > 0 && height > 0) {
+                var bmi = (weight / ((height / 100) * (height / 100))).toFixed(2);
+                document.getElementById('result').innerHTML = 'Your BMI is ' + bmi;
+            } else {
+                document.getElementById('result').innerHTML = 'Please enter valid weight and height!';
+            }
+        }
+    </script>
+</body>
+
+</html>
